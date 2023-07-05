@@ -1,0 +1,1 @@
+var imgPath = "assets/png";
