@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:our_wallet/app/data/typography.dart';
 
 import '../controllers/main_menu_controller.dart';
 
@@ -9,14 +10,15 @@ class MainMenuView extends GetView<MainMenuController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('MainMenuView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'MainMenuView is working',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Muazharin Alfan',
+              style: textRegular.copyWith(fontSize: 24),
+            ),
+          ],
         ),
       ),
     );
