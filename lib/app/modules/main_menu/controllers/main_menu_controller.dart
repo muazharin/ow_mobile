@@ -1,23 +1,13 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainMenuController extends GetxController {
-  //TODO: Implement MainMenuController
+  int page = 0;
+  GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void changePage(index) {
+    page = index;
+    update();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

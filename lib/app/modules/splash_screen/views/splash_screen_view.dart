@@ -23,7 +23,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  "$imgPath/ow_logo_6.png",
+                  "$imgPng/ow_logo_4.png",
                   width: 200,
                   height: 200,
                 ),

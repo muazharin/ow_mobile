@@ -1,1 +1,2 @@
-var imgPath = "assets/png";
+var imgPng = "assets/png";
+var imgJpg = "assets/jpg";
