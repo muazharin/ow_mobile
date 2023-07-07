@@ -10,22 +10,22 @@ class HomeController extends GetxController {
   var cardMenu = [
     {
       "name": "Top Up",
-      "icon": "$imgPng/topup.png",
+      "icon": "$pngPath/topup.png",
       "route": "",
     },
     {
       "name": "Pay",
-      "icon": "$imgPng/payment.png",
+      "icon": "$pngPath/payment.png",
       "route": "",
     },
     {
       "name": "Chart",
-      "icon": "$imgPng/barchart.png",
+      "icon": "$pngPath/barchart.png",
       "route": "",
     },
     {
       "name": "Invite",
-      "icon": "$imgPng/invitation.png",
+      "icon": "$pngPath/invitation.png",
       "route": "",
     },
   ];

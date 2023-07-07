@@ -14,13 +14,13 @@ class MainMenuView extends GetView<MainMenuController> {
   Widget build(BuildContext context) {
     final screen = [
       const HomeView(),
-      Container(color: grey),
-      Container(color: grey),
-      Container(color: grey),
+      Container(color: grey4),
+      Container(color: grey4),
+      Container(color: grey4),
     ];
 
     return Scaffold(
-      backgroundColor: grey,
+      backgroundColor: grey4,
       body: GetBuilder<MainMenuController>(
         builder: (context) {
           return Container(
@@ -37,7 +37,7 @@ class MainMenuView extends GetView<MainMenuController> {
           return CurvedNavigationBar(
             key: controller.bottomNavigationKey,
             color: white,
-            backgroundColor: grey,
+            backgroundColor: grey4,
             buttonBackgroundColor: primary,
             animationDuration: const Duration(milliseconds: 350),
             height: 56,

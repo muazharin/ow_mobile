@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: grey,
+      backgroundColor: grey4,
       body: GetBuilder<HomeController>(
         builder: (context) {
           return SafeArea(
@@ -67,7 +67,7 @@ class HomeView extends GetView<HomeController> {
                                   radius: 18,
                                   backgroundColor: white,
                                   child: Image.asset(
-                                    "$imgPng/ow_logo_1.png",
+                                    "$pngPath/ow_logo_1.png",
                                     width: 32,
                                     height: 32,
                                   ),
@@ -109,7 +109,7 @@ class HomeView extends GetView<HomeController> {
                                       horizontal: 16,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: grey,
+                                      color: grey4,
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     width: Get.width - 32,
@@ -117,7 +117,7 @@ class HomeView extends GetView<HomeController> {
                                     child: Center(
                                       child: Icon(
                                         Icons.add,
-                                        color: dark,
+                                        color: black,
                                       ),
                                     ),
                                   );
@@ -133,7 +133,7 @@ class HomeView extends GetView<HomeController> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(16),
                                         child: Image.asset(
-                                          "$imgJpg/card_${index + 1}.jpg",
+                                          "$jpgPath/card_${index + 1}.jpg",
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -153,7 +153,7 @@ class HomeView extends GetView<HomeController> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
                                         child: Image.asset(
-                                          "$imgJpg/ow_logo_2.jpg",
+                                          "$jpgPath/ow_logo_2.jpg",
                                           width: 32,
                                           height: 32,
                                         ),
@@ -165,7 +165,7 @@ class HomeView extends GetView<HomeController> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
                                         child: Image.asset(
-                                          "$imgPng/chip.png",
+                                          "$pngPath/chip.png",
                                           width: 32,
                                           height: 32,
                                         ),
@@ -209,7 +209,7 @@ class HomeView extends GetView<HomeController> {
                                           shape: BoxShape.rectangle,
                                           color: controller.index == e.key
                                               ? white
-                                              : grey,
+                                              : grey4,
                                         ),
                                       ),
                                     );
@@ -230,7 +230,7 @@ class HomeView extends GetView<HomeController> {
                           "${e['icon']}",
                           width: 24,
                           height: 24,
-                          color: primaryDark,
+                          color: primary,
                         ),
                         text: "${e['name']}",
                       );

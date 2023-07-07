@@ -4,10 +4,10 @@ import 'package:our_wallet/app/data/colors.dart';
 
 TextStyle textBold = GoogleFonts.montserrat(
   fontWeight: FontWeight.w700,
-  color: dark,
+  color: black,
 );
 
 TextStyle textRegular = GoogleFonts.montserrat(
   fontWeight: FontWeight.w500,
-  color: dark,
+  color: black,
 );

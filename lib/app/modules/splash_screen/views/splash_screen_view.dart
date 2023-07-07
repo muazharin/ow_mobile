@@ -17,13 +17,13 @@ class SplashScreenView extends GetView<SplashScreenController> {
         builder: (context) {
           return Center(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey[400]!,
+              baseColor: grey4,
               highlightColor: white,
               period: const Duration(seconds: 3),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  "$imgPng/ow_logo_4.png",
+                  "$pngPath/ow_logo_4.png",
                   width: 200,
                   height: 200,
                 ),
