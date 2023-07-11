@@ -44,12 +44,12 @@ class _IconPadState extends State<IconPad> {
                     repeat: false,
                   ),
                   Text(
-                    "Ups!!",
+                    "Oops,",
                     style: textRegular,
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Yang ini lagi dalam pengembangan",
+                    "Masih dalam pengembangan",
                     style: textRegular,
                     textAlign: TextAlign.center,
                   )

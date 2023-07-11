@@ -14,6 +14,21 @@ class AuthCheckPhoneNumberController extends GetxController {
   var phone = TextEditingController();
   var isComplete = false;
   var box = GetStorage();
+  var arg = Get.arguments;
+  String? title = 'Daftar';
+  String? filename = 'register.svg';
+  String? info = 'Jika sudah memiliki akun? ';
+
+  @override
+  void onInit() {
+    if (arg['isRecreate']) {
+      title = "Lupa Password";
+      filename = "forgot.svg";
+      info = "Tekan tombol kembali untuk ";
+    }
+    update();
+    super.onInit();
+  }
 
   void onChange() {
     if (phone.text.isEmpty) {
@@ -39,19 +54,39 @@ class AuthCheckPhoneNumberController extends GetxController {
         print(result);
         Get.back();
         if (result['status']) {
-          Get.toNamed(Routes.AUTH_OTP, arguments: {"phone": phone.text});
+          if (arg['isRecreate']) {
+            snackbarDanger(message: "Nomor Anda belum terdaftar");
+          } else {
+            Get.toNamed(Routes.AUTH_OTP, arguments: {
+              "phone": phone.text,
+              'isRecreate': arg['isRecreate'],
+            });
+          }
         } else {
-          if (result['data']['user_status'] == "incomplete") {
-            Get.toNamed(
-              Routes.AUTH_CREATE_PASSWORD,
-              arguments: {
-                'isRecreate': false,
-                'data': result['data'],
-              },
-            );
+          if (arg['isRecreate']) {
+            box.write('token', result['data']['token']);
+            Get.toNamed(Routes.AUTH_OTP, arguments: {
+              "phone": phone.text,
+              'isRecreate': arg['isRecreate'],
+            });
           } else {
             snackbarDanger(message: result["message"]);
           }
+          // if (result['data']['user_status'] == "incomplete") {
+          //   Get.toNamed(
+          //     Routes.AUTH_CREATE_PASSWORD,
+          //     arguments: {'isRecreate': arg['isRecreate']},
+          //   );
+          // } else {
+          //   if (arg['isRecreate']) {
+          //     Get.toNamed(Routes.AUTH_OTP, arguments: {
+          //       "phone": phone.text,
+          //       'isRecreate': arg['isRecreate'],
+          //     });
+          //   } else {
+          //     snackbarDanger(message: result["message"]);
+          //   }
+          // }
         }
       } catch (e) {
         Get.back();

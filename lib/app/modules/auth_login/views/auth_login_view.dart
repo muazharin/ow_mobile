@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:our_wallet/app/data/colors.dart';
-import 'package:our_wallet/app/data/constant.dart';
 import 'package:our_wallet/app/data/typography.dart';
 import 'package:our_wallet/app/data/validators.dart';
 import 'package:our_wallet/app/data/widgets/button_default.dart';
@@ -62,7 +61,12 @@ class AuthLoginView extends GetView<AuthLoginController> {
                     children: [
                       const Spacer(),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(
+                            Routes.AUTH_CHECK_PHONE_NUMBER,
+                            arguments: {'isRecreate': true},
+                          );
+                        },
                         child: Text(
                           "Lupa Password?",
                           style: textBold.copyWith(color: black3),
@@ -103,7 +107,10 @@ class AuthLoginView extends GetView<AuthLoginController> {
                       style: textBold.copyWith(color: primary),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Get.toNamed(Routes.AUTH_CHECK_PHONE_NUMBER);
+                          Get.toNamed(
+                            Routes.AUTH_CHECK_PHONE_NUMBER,
+                            arguments: {'isRecreate': false},
+                          );
                         },
                     ),
                   ],

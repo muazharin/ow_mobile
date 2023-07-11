@@ -11,6 +11,12 @@ abstract class Routes {
   static const AUTH_REGISTER = _Paths.AUTH_REGISTER;
   static const AUTH_CHECK_PHONE_NUMBER = _Paths.AUTH_CHECK_PHONE_NUMBER;
   static const AUTH_OTP = _Paths.AUTH_OTP;
+  static const WALLET = _Paths.WALLET;
+  static const ADD_WALLET = _Paths.ADD_WALLET;
+  static const DETAIL_WALLET = _Paths.DETAIL_WALLET;
+  static const TRANSACTION = _Paths.TRANSACTION;
+  static const PROFILE = _Paths.PROFILE;
+  static const PERSONAL_DATA = _Paths.PERSONAL_DATA;
 }
 
 abstract class _Paths {
@@ -23,4 +29,10 @@ abstract class _Paths {
   static const AUTH_REGISTER = '/auth-register';
   static const AUTH_CHECK_PHONE_NUMBER = '/auth-check-phone-number';
   static const AUTH_OTP = '/auth-otp';
+  static const WALLET = '/wallet';
+  static const ADD_WALLET = '/add-wallet';
+  static const DETAIL_WALLET = '/detail-wallet';
+  static const TRANSACTION = '/transaction';
+  static const PROFILE = '/profile';
+  static const PERSONAL_DATA = '/personal-data';
 }

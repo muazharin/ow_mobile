@@ -18,16 +18,16 @@ class AuthOtpController extends GetxController {
   var errorController = StreamController<ErrorAnimationType>();
   var debouncer = Debouncer(delay: const Duration(milliseconds: 100));
   Timer? countdownTimer;
-  Duration myDuration = const Duration(seconds: 5);
+  Duration myDuration = const Duration(minutes: 2);
   String strDigits(int n) => n.toString().padLeft(2, '0');
   var isTimeout = false;
-  var minutes = "00";
-  var second = "05";
+  var minutes = "02";
+  var second = "00";
 
   @override
   void onInit() {
     debouncer.call(() => handleSubmit(false));
-
+    startTimer();
     super.onInit();
   }
 
@@ -48,7 +48,7 @@ class AuthOtpController extends GetxController {
 
   void resetTimer() {
     otp.text = "";
-    myDuration = const Duration(seconds: 5);
+    myDuration = const Duration(minutes: 2);
     update();
   }
 
@@ -68,7 +68,9 @@ class AuthOtpController extends GetxController {
   }
 
   void handleSubmit(bool isResend) async {
-    Get.dialog(const Loading());
+    if (isResend) {
+      Get.dialog(const Loading());
+    }
     await auth.verifyPhoneNumber(
       phoneNumber: phoneFormat(arg['phone']),
       verificationCompleted: (credential) async {
@@ -85,11 +87,11 @@ class AuthOtpController extends GetxController {
       },
       codeSent: (verificationId, forceResendingToken) {
         verificationsId = verificationId;
-        Get.back();
         if (isResend) {
+          Get.back();
           resetTimer();
+          startTimer();
         }
-        startTimer();
       },
       codeAutoRetrievalTimeout: (verificationId) {
         verificationsId = verificationId;
@@ -100,6 +102,9 @@ class AuthOtpController extends GetxController {
 
   void handleVerify(String code) async {
     Get.dialog(const Loading());
+    stopTimer();
+    isTimeout = true;
+    update();
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
       verificationId: verificationsId,
       smsCode: code,
@@ -107,7 +112,14 @@ class AuthOtpController extends GetxController {
     try {
       await auth.signInWithCredential(credential);
       Get.back();
-      Get.offNamed(Routes.AUTH_REGISTER);
+      if (arg['isRecreate']) {
+        Get.offNamed(
+          Routes.AUTH_CREATE_PASSWORD,
+          arguments: {'isRecreate': arg['isRecreate']},
+        );
+      } else {
+        Get.offNamed(Routes.AUTH_REGISTER, arguments: {'phone': arg['phone']});
+      }
     } catch (e) {
       Get.back();
       snackbarDanger(message: "$e");

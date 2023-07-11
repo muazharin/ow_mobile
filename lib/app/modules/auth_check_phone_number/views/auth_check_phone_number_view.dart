@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -19,9 +20,13 @@ class AuthCheckPhoneNumberView extends GetView<AuthCheckPhoneNumberController> {
       appBar: AppBar(
         backgroundColor: white,
         elevation: 0,
-        title: Text(
-          'Daftar',
-          style: textBold,
+        title: GetBuilder<AuthCheckPhoneNumberController>(
+          builder: (context) {
+            return Text(
+              controller.title ?? "",
+              style: textBold,
+            );
+          },
         ),
         automaticallyImplyLeading: false,
       ),
@@ -34,7 +39,7 @@ class AuthCheckPhoneNumberView extends GetView<AuthCheckPhoneNumberController> {
               child: ListView(
                 children: [
                   const SizedBox(height: 32),
-                  const SvgFile(filename: "register.svg"),
+                  SvgFile(filename: controller.filename ?? "register.svg"),
                   const SizedBox(height: 32),
                   InputText(
                     hintText: "Masukkan Nomor Telepon",
@@ -57,6 +62,36 @@ class AuthCheckPhoneNumberView extends GetView<AuthCheckPhoneNumberController> {
             ),
           );
         },
+      ),
+      bottomSheet: Container(
+        color: white,
+        padding: const EdgeInsets.only(bottom: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: textRegular,
+                  children: [
+                    TextSpan(
+                      text: controller.info ?? "Jika sudah memiliki akun? ",
+                    ),
+                    TextSpan(
+                      text: "Masuk",
+                      style: textBold.copyWith(color: primary),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.back();
+                        },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

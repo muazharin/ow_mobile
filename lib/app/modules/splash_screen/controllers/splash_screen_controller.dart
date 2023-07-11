@@ -16,7 +16,6 @@ class SplashScreenController extends GetxController {
   }
 
   void checkLogin() {
-    // box.remove('is_login');
     bool isLogin = box.read('is_login') ?? false;
     String userStatus = box.read('user_status') ?? "";
     if (isLogin && userStatus == "complete") {

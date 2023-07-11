@@ -43,10 +43,14 @@ class AuthLoginController extends GetxController {
           if (result['data']['user_status'] == "incomplete") {
             box.write("token", result['data']['token']);
             Get.back();
-            Get.toNamed(Routes.AUTH_CREATE_PASSWORD);
+            Get.toNamed(
+              Routes.AUTH_CREATE_PASSWORD,
+              arguments: {'isRecreate': false},
+            );
           } else {
             box.write("token", result['data']['token']);
             box.write("is_login", true);
+            box.write("user_status", result['data']['user_status']);
             Get.offAllNamed(Routes.MAIN_MENU);
           }
         }

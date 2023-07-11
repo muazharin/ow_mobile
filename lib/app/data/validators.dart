@@ -1,6 +1,6 @@
 String? Function(String? v, String n)? valString = (v, n) {
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   }
   return null;
 };
@@ -8,9 +8,9 @@ String? Function(String? v, String n)? valNumber = (v, n) {
   String patttern = r'(^[0-9]*$)';
   RegExp regExp = RegExp(patttern);
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   } else if (!regExp.hasMatch(v)) {
-    return "$n must be number";
+    return "$n harus berupa angka";
   }
   return null;
 };
@@ -19,9 +19,9 @@ String? Function(String? v, String n)? valEmail = (v, n) {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regExp = RegExp(pattern);
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   } else if (!regExp.hasMatch(v)) {
-    return "$n is invalid";
+    return "$n tidak valid";
   }
   return null;
 };
@@ -31,9 +31,9 @@ String? Function(String? v, String n)? valPassword = (v, n) {
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
   RegExp regExp = RegExp(pattern);
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   } else if (!regExp.hasMatch(v)) {
-    return "$n minimum 8 characters and have at least 1 lowercase letter, 1 uppercase letter, 1 number and 1 special character ( ! @ # \$ & * ~ )";
+    return "$n minimal 8 karakter dan paling tidak berisikan 1 huruf kecil, 1 kapital, 1 nomor and 1 spesial karakter ( ! @ # \$ & * ~ )";
   }
   return null;
 };
@@ -43,11 +43,11 @@ String? Function(String? v, String? n, String? m)? valCPassword = (v, n, m) {
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
   RegExp regExp = RegExp(pattern);
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   } else if (v != m) {
-    return "$n doesn't match";
+    return "$n tidak cocok";
   } else if (!regExp.hasMatch(v)) {
-    return "$n minimum 8 characters and have at least 1 lowercase letter, 1 uppercase letter, 1 number and 1 special character ( ! @ # \$ & * ~ )";
+    return "$n minimal 8 karakter dan paling tidak berisikan 1 huruf kecil, 1 kapital, 1 nomor and 1 spesial karakter ( ! @ # \$ & * ~ )";
   }
   return null;
 };
@@ -56,11 +56,11 @@ String? Function(String? v, String n)? valPhone = (v, n) {
   String patttern = r'(^[0-9]*$)';
   RegExp regExp = RegExp(patttern);
   if (v!.isEmpty) {
-    return "$n cannot be empty";
+    return "$n tidak boleh kosong";
   } else if (v.length < 10) {
-    return "$n must contain at least 10 digits";
+    return "$n paling tidak harus 10 digit";
   } else if (!regExp.hasMatch(v)) {
-    return "$n must contains number";
+    return "$n harus berupa angka";
   }
   return null;
 };
