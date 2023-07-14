@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:our_wallet/app/data/colors.dart';
 import 'package:our_wallet/app/data/typography.dart';
-import 'package:our_wallet/app/data/utils.dart';
 import 'package:our_wallet/app/data/widgets/empty_screen.dart';
 import 'package:our_wallet/app/data/widgets/loading_shimmer.dart';
 import 'package:our_wallet/app/data/widgets/something_wrong.dart';
+import 'package:our_wallet/app/routes/app_pages.dart';
 
 import '../controllers/transaction_controller.dart';
 
@@ -64,52 +64,58 @@ class TransactionView extends GetView<TransactionController> {
                           Column(
                             children: [
                               ...ex.riwayat!.map((e) {
-                                return Container(
-                                  width: Get.width,
-                                  margin: const EdgeInsets.only(bottom: 8),
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(16),
+                                return InkWell(
+                                  onTap: () => Get.toNamed(
+                                    Routes.DETAIL_TRANSACTION,
+                                    arguments: {"data": e},
                                   ),
-                                  child: ListTile(
-                                    title: Text(
-                                      "${e.transWallet!.transWalletName}",
-                                      style: textRegular,
-                                      overflow: TextOverflow.ellipsis,
+                                  child: Container(
+                                    width: Get.width,
+                                    margin: const EdgeInsets.only(bottom: 8),
+                                    decoration: BoxDecoration(
+                                      color: white,
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
-                                    subtitle: Text(
-                                      DateFormat('hh:mm a')
-                                          .format(e.transDate!),
-                                      style: textRegular.copyWith(
-                                        color: grey,
+                                    child: ListTile(
+                                      title: Text(
+                                        "${e.transWallet!.transWalletName}",
+                                        style: textRegular,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                    ),
-                                    trailing: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          DateFormat('dd MMM yyyy')
-                                              .format(e.transDate!),
-                                          style: textRegular,
+                                      subtitle: Text(
+                                        DateFormat('hh:mm a')
+                                            .format(e.transDate!),
+                                        style: textRegular.copyWith(
+                                          color: grey,
                                         ),
-                                        const SizedBox(height: 4),
-                                        e.transType == "Kredit"
-                                            ? Text(
-                                                '+ Rp ${controller.c.format(e.transPrice!)}',
-                                                style: textBold.copyWith(
-                                                  color: success,
+                                      ),
+                                      trailing: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            DateFormat('dd MMM yyyy')
+                                                .format(e.transDate!),
+                                            style: textRegular,
+                                          ),
+                                          const SizedBox(height: 4),
+                                          e.transType == "Debit"
+                                              ? Text(
+                                                  '+ Rp ${controller.c.format(e.transPrice!)}',
+                                                  style: textBold.copyWith(
+                                                    color: success,
+                                                  ),
+                                                )
+                                              : Text(
+                                                  '- Rp ${controller.c.format(e.transPrice!)}',
+                                                  style: textBold.copyWith(
+                                                    color: warning,
+                                                  ),
                                                 ),
-                                              )
-                                            : Text(
-                                                '- Rp ${controller.c.format(e.transPrice!)}',
-                                                style: textBold.copyWith(
-                                                  color: warning,
-                                                ),
-                                              ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );

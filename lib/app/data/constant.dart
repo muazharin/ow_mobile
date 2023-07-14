@@ -1,5 +1,5 @@
 // base_url
-// var baseUrl = 'http://192.168.141.228:8080';
+// var baseUrl = 'http://192.168.12.228:8080';
 var baseUrl = 'http://192.168.1.16:8080';
 
 // assets path
@@ -40,6 +40,7 @@ String? getmemberforwallet = "/ow/get_for_member";
 String? gettransactionwallet = "/trans/get_all_by_wallet_id";
 String? gettransactionuser = "/trans/get_all_by_user_id";
 String? createtransaction = "/trans/create_trans";
+String? detailtransaction = "/trans/get_detail_by_id";
 
 // category
 String? getcategory = "/category/get_all_category";

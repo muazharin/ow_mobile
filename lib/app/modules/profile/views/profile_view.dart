@@ -67,21 +67,26 @@ class ProfileView extends GetView<ProfileController> {
                     );
                   } else if (controller.isError) {
                     return ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: white,
-                        radius: 28,
-                        child: Text(
-                          "X",
-                          style: textBold.copyWith(color: primary),
+                      leading: Hero(
+                        tag: "image",
+                        child: CircleAvatar(
+                          backgroundColor: white,
+                          radius: 28,
+                          child: Text(
+                            "X",
+                            style: textBold.copyWith(color: primary),
+                          ),
                         ),
                       ),
                       title: Text(
-                        "***",
+                        "Nama tidak ditemukan",
                         style: textRegular,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       subtitle: Text(
-                        "***",
+                        "Email tidak ditemukan",
                         style: textRegular,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     );
                   }

@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/add_category/bindings/add_category_binding.dart';
+import '../modules/add_category/views/add_category_view.dart';
+import '../modules/add_transaction/bindings/add_transaction_binding.dart';
+import '../modules/add_transaction/views/add_transaction_view.dart';
 import '../modules/add_wallet/bindings/add_wallet_binding.dart';
 import '../modules/add_wallet/views/add_wallet_view.dart';
 import '../modules/auth_check_phone_number/bindings/auth_check_phone_number_binding.dart';
@@ -12,6 +16,10 @@ import '../modules/auth_otp/bindings/auth_otp_binding.dart';
 import '../modules/auth_otp/views/auth_otp_view.dart';
 import '../modules/auth_register/bindings/auth_register_binding.dart';
 import '../modules/auth_register/views/auth_register_view.dart';
+import '../modules/category/bindings/category_binding.dart';
+import '../modules/category/views/category_view.dart';
+import '../modules/detail_transaction/bindings/detail_transaction_binding.dart';
+import '../modules/detail_transaction/views/detail_transaction_view.dart';
 import '../modules/detail_wallet/bindings/detail_wallet_binding.dart';
 import '../modules/detail_wallet/views/detail_wallet_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -110,6 +118,26 @@ class AppPages {
       binding: PersonalDataBinding(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: _Paths.ADD_TRANSACTION,
+      page: () => const AddTransactionView(),
+      binding: AddTransactionBinding(),
+    ),
+    GetPage(
+      name: _Paths.CATEGORY,
+      page: () => const CategoryView(),
+      binding: CategoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_CATEGORY,
+      page: () => const AddCategoryView(),
+      binding: AddCategoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_TRANSACTION,
+      page: () => const DetailTransactionView(),
+      binding: DetailTransactionBinding(),
     ),
   ];
 }

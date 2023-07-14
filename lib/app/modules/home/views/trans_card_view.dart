@@ -30,7 +30,7 @@ class TransCardView extends GetView<HomeController> {
           return Container(
             width: Get.width - 32,
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: white,
               borderRadius: BorderRadius.circular(16),
@@ -46,7 +46,7 @@ class TransCardView extends GetView<HomeController> {
           return Container(
             width: Get.width - 32,
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: white,
               borderRadius: BorderRadius.circular(16),
@@ -116,7 +116,7 @@ class TransCardView extends GetView<HomeController> {
                         style: textRegular,
                       ),
                       const SizedBox(height: 4),
-                      e.value.transType == "Kredit"
+                      e.value.transType == "Debit"
                           ? Text(
                               '+ Rp ${controller.c.format(e.value.transPrice!)}',
                               style: textBold.copyWith(

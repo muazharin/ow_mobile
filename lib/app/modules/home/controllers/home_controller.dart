@@ -10,6 +10,7 @@ import 'package:our_wallet/app/data/models/member_model.dart';
 import 'package:our_wallet/app/data/models/trans_model.dart';
 import 'package:our_wallet/app/data/models/wallet_model.dart';
 import 'package:our_wallet/app/data/services.dart';
+import 'package:our_wallet/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   var authModel = AuthModel();
@@ -30,34 +31,45 @@ class HomeController extends GetxController {
   var listMember = <MemberModel>[];
   var listTrans = <TransModel>[];
   var c = NumberFormat("#,##0", "id_ID");
-  var cardMenu = [
-    {
-      "name": "Top Up",
-      "icon": "$pngPath/topup.png",
-      "route": "",
-    },
-    {
-      "name": "Pay",
-      "icon": "$pngPath/payment.png",
-      "route": "",
-    },
-    {
-      "name": "Chart",
-      "icon": "$pngPath/barchart.png",
-      "route": "",
-    },
-    {
-      "name": "Invite",
-      "icon": "$pngPath/invitation.png",
-      "route": "",
-    },
-  ];
+  var cardMenu = [];
 
   @override
   void onInit() {
     authModel = AuthModel.fromJson(parseJwt(box.read('token')));
     greetingCheck();
     getOurWallet();
+    cardMenu = [
+      {
+        "name": "Top Up",
+        "icon": "$pngPath/topup.png",
+        "onTap": () {
+          Get.toNamed(
+            Routes.ADD_TRANSACTION,
+            arguments: {"data": list[index], "type": "Debit"},
+          );
+        },
+      },
+      {
+        "name": "Pay",
+        "icon": "$pngPath/payment.png",
+        "onTap": () {
+          Get.toNamed(
+            Routes.ADD_TRANSACTION,
+            arguments: {"data": list[index], "type": "Kredit"},
+          );
+        },
+      },
+      {
+        "name": "Chart",
+        "icon": "$pngPath/barchart.png",
+        "onTap": null,
+      },
+      {
+        "name": "Invite",
+        "icon": "$pngPath/invitation.png",
+        "onTap": null,
+      },
+    ];
     super.onInit();
   }
 

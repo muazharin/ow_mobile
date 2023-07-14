@@ -169,23 +169,28 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ],
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 268),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: controller.cardMenu.map<Widget>((e) {
-                        return IconPad(
-                          icon: Image.asset(
-                            "${e['icon']}",
-                            width: 24,
-                            height: 24,
-                            color: primary,
+                  controller.list.isEmpty
+                      ? const SizedBox()
+                      : Container(
+                          margin: const EdgeInsets.only(top: 268),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: controller.cardMenu.map<Widget>((e) {
+                              return IconPad(
+                                onTap: e['onTap'] == null
+                                    ? null
+                                    : () => e['onTap'](),
+                                icon: Image.asset(
+                                  "${e['icon']}",
+                                  width: 24,
+                                  height: 24,
+                                  color: primary,
+                                ),
+                                text: "${e['name']}",
+                              );
+                            }).toList(),
                           ),
-                          text: "${e['name']}",
-                        );
-                      }).toList(),
-                    ),
-                  ),
+                        ),
                 ],
               ),
             );

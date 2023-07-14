@@ -4,13 +4,9 @@ import 'package:get/get.dart';
 import 'package:our_wallet/app/data/colors.dart';
 import 'package:our_wallet/app/data/constant.dart';
 import 'package:our_wallet/app/data/typography.dart';
-import 'package:our_wallet/app/data/widgets/button_default.dart';
-import 'package:our_wallet/app/data/widgets/button_outlined.dart';
 import 'package:our_wallet/app/data/widgets/empty_screen.dart';
 import 'package:our_wallet/app/data/widgets/loading_shimmer.dart';
-import 'package:our_wallet/app/data/widgets/option_bottom.dart';
 import 'package:our_wallet/app/data/widgets/something_wrong.dart';
-import 'package:our_wallet/app/modules/home/controllers/home_controller.dart';
 import 'package:our_wallet/app/routes/app_pages.dart';
 
 import '../controllers/wallet_controller.dart';

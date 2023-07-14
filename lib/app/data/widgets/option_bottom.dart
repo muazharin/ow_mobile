@@ -29,7 +29,7 @@ class OptionBottom extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ...list.map<Widget>((e) {
-            return GestureDetector(
+            return InkWell(
               onTap: e['on_tap'],
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16),

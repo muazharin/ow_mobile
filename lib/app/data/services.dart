@@ -112,6 +112,7 @@ class APIService {
       );
       return response;
     } on DioException catch (e) {
+      print(e);
       throw error(e, onTap!);
     }
   }

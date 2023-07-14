@@ -17,6 +17,10 @@ abstract class Routes {
   static const TRANSACTION = _Paths.TRANSACTION;
   static const PROFILE = _Paths.PROFILE;
   static const PERSONAL_DATA = _Paths.PERSONAL_DATA;
+  static const ADD_TRANSACTION = _Paths.ADD_TRANSACTION;
+  static const CATEGORY = _Paths.CATEGORY;
+  static const ADD_CATEGORY = _Paths.ADD_CATEGORY;
+  static const DETAIL_TRANSACTION = _Paths.DETAIL_TRANSACTION;
 }
 
 abstract class _Paths {
@@ -35,4 +39,8 @@ abstract class _Paths {
   static const TRANSACTION = '/transaction';
   static const PROFILE = '/profile';
   static const PERSONAL_DATA = '/personal-data';
+  static const ADD_TRANSACTION = '/add-transaction';
+  static const CATEGORY = '/category';
+  static const ADD_CATEGORY = '/add-category';
+  static const DETAIL_TRANSACTION = '/detail-transaction';
 }

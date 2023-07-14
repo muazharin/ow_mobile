@@ -33,65 +33,77 @@ class PersonalDataView extends GetView<PersonalDataController> {
             child: ListView(
               children: [
                 Center(
-                  child: Hero(
-                    tag: "image",
-                    child: Stack(
-                      children: [
-                        controller.authModel.userPhoto!.isNotEmpty
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(48),
-                                child: Image.network(
-                                  controller.authModel.userPhoto!,
-                                  width: 96,
-                                  height: 96,
-                                  fit: BoxFit.cover,
-                                ),
-                              )
-                            : CircleAvatar(
-                                backgroundColor: primary,
-                                radius: 48,
-                                child: Text(
-                                  controller.authModel.userName![0]
-                                      .toUpperCase(),
-                                  style: textBold.copyWith(
-                                      color: white, fontSize: 20),
-                                ),
-                              ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.bottomSheet(
-                                OptionBottom(
-                                  list: [
-                                    {
-                                      "name": "Kamera",
-                                      "on_tap": () => controller
-                                          .getImage(ImageSource.camera),
-                                    },
-                                    {
-                                      "name": "Galeri",
-                                      "on_tap": () => controller
-                                          .getImage(ImageSource.gallery),
-                                    },
-                                  ],
-                                ),
-                              );
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: white,
-                              child: Icon(
-                                Icons.edit,
-                                color: primary,
-                                size: 16,
-                              ),
+                  child: controller.authModel.userPhoto == null
+                      ? Hero(
+                          tag: "image",
+                          child: CircleAvatar(
+                            backgroundColor: white,
+                            radius: 48,
+                            child: Text(
+                              "X",
+                              style: textBold.copyWith(color: primary),
                             ),
                           ),
                         )
-                      ],
-                    ),
-                  ),
+                      : Hero(
+                          tag: "image",
+                          child: Stack(
+                            children: [
+                              controller.authModel.userPhoto!.isNotEmpty
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(48),
+                                      child: Image.network(
+                                        controller.authModel.userPhoto!,
+                                        width: 96,
+                                        height: 96,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  : CircleAvatar(
+                                      backgroundColor: primary,
+                                      radius: 48,
+                                      child: Text(
+                                        controller.authModel.userName![0]
+                                            .toUpperCase(),
+                                        style: textBold.copyWith(
+                                            color: white, fontSize: 20),
+                                      ),
+                                    ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.bottomSheet(
+                                      OptionBottom(
+                                        list: [
+                                          {
+                                            "name": "Kamera",
+                                            "on_tap": () => controller
+                                                .getImage(ImageSource.camera),
+                                          },
+                                          {
+                                            "name": "Galeri",
+                                            "on_tap": () => controller
+                                                .getImage(ImageSource.gallery),
+                                          },
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor: white,
+                                    child: Icon(
+                                      Icons.edit,
+                                      color: primary,
+                                      size: 16,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                 ),
                 const SizedBox(height: 32),
                 ListPersonalData(
@@ -112,8 +124,10 @@ class PersonalDataView extends GetView<PersonalDataController> {
                 ),
                 ListPersonalData(
                   name: "Tanggal Lahir",
-                  data: DateFormat("dd MMMM yyyy", 'id_ID')
-                      .format(controller.authModel.userTglLahir!),
+                  data: controller.authModel.userTglLahir == null
+                      ? ""
+                      : DateFormat("dd MMMM yyyy", 'id_ID')
+                          .format(controller.authModel.userTglLahir!),
                 ),
                 ListPersonalData(
                   name: "Alamat",
@@ -148,8 +162,9 @@ class PersonalDataView extends GetView<PersonalDataController> {
                           ),
                         ),
                         TextSpan(
-                          text:
-                              "Bergabung sejak ${DateFormat("dd MMMM yyyy", 'id_ID').format(controller.authModel.userCreatedAt!)} ",
+                          text: controller.authModel.userCreatedAt == null
+                              ? ""
+                              : "Bergabung sejak ${DateFormat("dd MMMM yyyy", 'id_ID').format(controller.authModel.userCreatedAt!)} ",
                         ),
                       ],
                     ),
